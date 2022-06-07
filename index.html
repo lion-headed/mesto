@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesto</title>
+    <link rel="stylesheet" href="./pages/index.css">
+    <base target="blank">
+</head>
+<body class="page">
+    <header class="header">
+        <img class="header__logo" src="./pictures/headerlogo.svg" alt="хэдер лого">
+    </header>
+    <section class="profile">
+        <img class="profile__avatar" src="./pictures/kusto.svg" alt="аватарка">
+        <div class="profile__info">
+            <div class="profil__name">
+                <h1 class="profile__traveler">Жак-Ив Кусто</h1>
+                <p class="profile__vocation">Исследователь океанов</p>
+            </div>
+            <button class="profile__edit" type="button"> 
+                <img class="profile__editbutton" src="./pictures/pencil.svg" alt="карандаш">
+            </button>
+        </div>
+        <button class="profile__add" type="button">
+            <img class="profile__addbutton" src="./pictures/plus.svg" alt="плюс">
+        </button>
+    </section>
+    <section class="popup">
+        <div class="popup__container">
+             <button class="popup__closebutton" type="button"></button>
+             <form class="popup__form" id="popup__edit" name="edit form">
+                 <h3 class="popup__title">Редактировать профиль</h3>
+                 <input class="popup__input" type="text" id="edit_traveler" name="traveler">
+                 <input class="popup__input" type="text" id="edit_vocation" name="vocation">
+                 <button class="popup__savebutton" type="submit">Сохранить</button>
+             </form>
+        </div>
+     </section>
+     <script src="./script/index.js"></script>
+    <section class="elements">
+        <ul class="elements__list">
+            <li class="elements__element">
+                <img class="elements__image" src="./pictures/karachai.svg" alt="Карачаевск">
+                <div class="element__caption">
+                    <h2 class="element__title">Карачаевск</h2>
+                    <button class="element__like" type="button">
+                    </button>
+                </div>
+            </li>
+            <li class="elements__element">
+                <img class="elements__image" src="./pictures/elbrus.svg" alt="Эльбрус">
+                <figcaption class="element__caption">
+                    <h2 class="element__title">Гора Эльбрус</h2>
+                    <button class="element__like" type="button">
+                    </button>
+                </figcaption>
+            </li>
+            <li class="elements__element">
+                <img class="elements__image" src="./pictures/dombai.svg" alt="Домбай">
+                <figcaption class="element__caption">
+                    <h2 class="element__title">Домбай</h2>
+                    <button class="element__like" type="button">
+                    </button>
+                </figcaption>
+            </li>
+            <li class="elements__element">
+                <img class="elements__image" src="./pictures/elbrus.svg" alt="Эльбрус">
+                <figcaption class="element__caption">
+                    <h2 class="element__title">Гора Эльбрус</h2>
+                    <button class="element__like" type="button">
+                    </button>
+                </figcaption>
+            </li>
+            <li class="elements__element">
+                <img class="elements__image" src="./pictures/dombai.svg" alt="Домбай">
+                <figcaption class="element__caption">
+                    <h2 class="element__title">Домбай</h2>
+                    <button class="element__like" type="button">
+                    </button>
+                </figcaption>
+            </li>
+            <li class="elements__element">
+                <img class="elements__image" src="./pictures/karachai.svg" alt="Карачаевск">
+                <figcaption class="element__caption">
+                    <h2 class="element__title">Карачаевск</h2>
+                    <button class="element__like" type="button">
+                    </button>
+                </figcaption>
+            </li>
+        </ul>
+    </section>
+    <footer class="footer">
+        <p class="footer__copyright">&copy; 2022. Mesto Russia</p>
+    </footer>
+</body>
+</html>
