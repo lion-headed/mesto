@@ -28,6 +28,6 @@
 
 **Проект**
 
-[Мой проект](https://lion-headed.github.io/russian-travel/index.html), знакомтесь.
+[Мой проект](https://lion-headed.github.io/mesto/), знакомтесь.
 
 Всем лучи добра!
