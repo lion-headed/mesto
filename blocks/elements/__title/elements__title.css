@@ -1,4 +1,4 @@
-.element__title {
+.elements__title {
   margin: 0;
   max-width: 190px;
   color: #000000;
@@ -12,7 +12,7 @@
 }
 
 @media screen and (max-width: 1279px) {
-    .element__title {
+    .elements__title {
         max-width: 130px;
         font-size: 20px;
         line-height: 25px;
@@ -20,7 +20,7 @@
 }
 
 @media screen and (max-width: 1023px) {
-    .element__title {
+    .elements__title {
         max-width: 190px;
     }
 }
