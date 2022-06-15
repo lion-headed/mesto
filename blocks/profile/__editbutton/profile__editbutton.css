@@ -2,6 +2,7 @@
   padding: 0;
   width: 10px;
   height: 10px;
+  background-image: url(../../../pictures/pencil.svg);
 }
 
 @media screen and (max-width: 767px) {

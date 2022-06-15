@@ -19,23 +19,12 @@
                 <p class="profile__vocation">Исследователь океанов</p>
             </div>
             <button class="profile__edit" type="button"> 
-                <img class="profile__editbutton" src="./pictures/pencil.svg" alt="карандаш">
+                <div class="profile__editbutton"></div>
             </button>
         </div>
         <button class="profile__add" type="button">
-            <img class="profile__addbutton" src="./pictures/plus.svg" alt="плюс">
+            <div class="profile__addbutton"></div>
         </button>
-    </section>
-    <section class="popup">
-        <div class="popup__container">
-             <button class="popup__closebutton" type="button"></button>
-             <form class="popup__form" id="popup__edit" name="edit form">
-                 <h3 class="popup__title">Редактировать профиль</h3>
-                 <input class="popup__input" type="text" id="edit_traveler" name="traveler">
-                 <input class="popup__input" type="text" id="edit_vocation" name="vocation">
-                 <button class="popup__savebutton" type="submit">Сохранить</button>
-             </form>
-        </div>
     </section>
     <section class="elements">
         <ul class="elements__list">
@@ -92,6 +81,17 @@
     <footer class="footer">
         <p class="footer__copyright">&copy; 2022. Mesto Russia</p>
     </footer>
+    <div class="popup">
+        <div class="popup__container">
+             <button class="popup__closebutton" type="button"></button>
+             <form class="popup__form" id="popup__edit" name="edit form">
+                 <h3 class="popup__title">Редактировать профиль</h3>
+                 <input required placeholder="Жак-Ив Кусто" class="popup__input popup__input_type_traveler" type="text" id="edit_traveler" name="traveler">
+                 <input required placeholder="Исследователь океанов" class="popup__input popup__input_type_vocation" type="text" id="edit_vocation" name="vocation">
+                 <button class="popup__savebutton" type="submit">Сохранить</button>
+             </form>
+        </div>
+    </div>
     <script src="./script/index.js"></script>
 </body>
 </html>
