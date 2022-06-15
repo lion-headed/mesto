@@ -2,7 +2,6 @@
   padding: 0;
   width: 22px;
   height: 22px;
-  background-image: url(../../../pictures/plus.svg)
 }
 
 @media screen and (max-width: 767px) {
