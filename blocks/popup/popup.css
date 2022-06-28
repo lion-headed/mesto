@@ -11,6 +11,8 @@
   align-items: center;
   justify-content: center;
   z-index: 1;
+  visibility: hidden;
+  opacity: 0;
 }
 
 @media screen and (max-width: 767px) {

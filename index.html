@@ -27,56 +27,7 @@
         </button>
     </section>
     <section class="elements">
-        <ul class="elements__list">
-            <li class="elements__element">
-                <img class="elements__image" src="./pictures/karachai.jpg" alt="Карачаевск">
-                <div class="elements__caption">
-                    <h2 class="elements__title">Карачаевск</h2>
-                    <button class="elements__like" type="button">
-                    </button>
-                </div>
-            </li>
-            <li class="elements__element">
-                <img class="elements__image" src="./pictures/elbrus.jpg" alt="Эльбрус">
-                <div class="elements__caption">
-                    <h2 class="elements__title">Гора Эльбрус</h2>
-                    <button class="elements__like" type="button">
-                    </button>
-                </div>
-            </li>
-            <li class="elements__element">
-                <img class="elements__image" src="./pictures/dombai.jpg" alt="Домбай">
-                <div class="elements__caption">
-                    <h2 class="elements__title">Домбай</h2>
-                    <button class="elements__like" type="button">
-                    </button>
-                </div>
-            </li>
-            <li class="elements__element">
-                <img class="elements__image" src="./pictures/elbrus.jpg" alt="Эльбрус">
-                <div class="elements__caption">
-                    <h2 class="elements__title">Гора Эльбрус</h2>
-                    <button class="elements__like" type="button">
-                    </button>
-                </div>
-            </li>
-            <li class="elements__element">
-                <img class="elements__image" src="./pictures/dombai.jpg" alt="Домбай">
-                <div class="elements__caption">
-                    <h2 class="elements__title">Домбай</h2>
-                    <button class="elements__like" type="button">
-                    </button>
-                </div>
-            </li>
-            <li class="elements__element">
-                <img class="elements__image" src="./pictures/karachai.jpg" alt="Карачаевск">
-                <div class="elements__caption">
-                    <h2 class="elements__title">Карачаевск</h2>
-                    <button class="elements__like" type="button">
-                    </button>
-                </div>
-            </li>
-        </ul>
+        <ul class="elements__list"></ul>
     </section>
     <footer class="footer">
         <p class="footer__copyright">&copy; 2022. Mesto Russia</p>
@@ -92,6 +43,34 @@
              </form>
         </div>
     </div>
+    <div class="popup popup_add">
+        <div class="popup__container">
+             <button class="popup__closebutton popup__closebutton_popup_add" type="button"></button>
+             <form class="popup__addform" id="popup__add" name="popup__add">
+                 <h3 class="popup__title">Новое место</h3>
+                 <input required placeholder="Название" class="popup__input popup__input_type_place-name" type="text" id="edit_place-name" name="place-name">
+                 <input required placeholder="Ссылка на картинку" class="popup__input popup__input_type_place-link" type="text" id="edit_place-link" name="place-link">
+                 <button class="popup__addbutton" type="submit">Сохранить</button>
+             </form>
+        </div>
+    </div>
+    <div class="popup popup_open">
+        <div class="popup__container-place">
+             <button class="popup__closebutton popup__closebutton_popup_open" type="button"></button>
+             <img class="popup__placeimage" src="#" alt="#">
+             <h3 class="popup__openname"></h3>
+        </div>
+    </div>
+    <template class="elements_template">
+            <li class="elements__element">
+                <button class="elements__delete" type="button"></button>
+                <img class="elements__image" src="#" alt="Картинка">
+                <div class="elements__caption">
+                    <h2 class="elements__title"></h2>
+                    <button class="elements__like" type="button"></button>
+                </div>
+            </li>
+    </template>
     <script src="./script/index.js"></script>
 </body>
 </html>
