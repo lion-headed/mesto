@@ -141,9 +141,9 @@ popupInfo.addEventListener("submit", function (event) {
 addPlaceButton.addEventListener("click", () => openPopup(popupAdd));
 closePlaceButton.addEventListener("click", () => closePopup(popupAdd));
 popupAddForm.addEventListener("submit", createItem);
-  
+
+closeButtonPicture.addEventListener("click", () => closePopup(popupPlaceImage));
+
 initialCards.forEach((item) => {
     renderItem(item.name, item.link);
 });
-
-closeButtonPicture.addEventListener("click", () => closePopup(popupPlaceImage));
