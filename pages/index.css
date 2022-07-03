@@ -22,6 +22,7 @@
 @import url(../blocks/popup/__input/_type/popup__input_type_vocation.css);
 @import url(../blocks/popup/__input/_type/popup__input_type_place-name.css);
 @import url(../blocks/popup/__input/_type/popup__input_type_place-link.css);
+@import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__container-place/popup__container-place.css);
 @import url(../blocks/popup/__placeimage/popup__placeimage.css);
 @import url(../blocks/popup/__openname/popup__openname.css);
