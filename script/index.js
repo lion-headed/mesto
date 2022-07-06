@@ -1,28 +1,25 @@
+const profileForm = document.querySelector(".popup__form");
+const profilePopup = document.querySelector(".profile-popup");
 const editInfoButton = document.querySelector(".profile__edit");
 const closeInfoButton = document.querySelector(".popup__closebutton_profile-popup");
-const popupInfo = document.querySelector(".profile-popup");
-const userName = document.querySelector(".profile__traveler");
-const userJob = document.querySelector(".profile__vocation");
-const popupInfoForm = document.querySelector(".popup__form");
-const userNameInput = document.querySelector(".popup__input_type_traveler");
-const userJobInput = document.querySelector(".popup__input_type_vocation");
- 
+const profileTraveler = document.querySelector(".profile__traveler");
+const profileVocation = document.querySelector(".profile__vocation");
+const profileTravelerInput = document.querySelector(".popup__input_type_traveler");
+const profileVocationInput = document.querySelector(".popup__input_type_vocation");
 const addPlaceButton = document.querySelector(".profile__add");
 const closePlaceButton = document.querySelector(".popup__closebutton_popup_add");
 const popupAdd = document.querySelector(".popup_add");
-const itemTemplate = document.querySelector(".elements_template").content;
-const elList = document.querySelector(".elements__list");
 const popupAddForm = document.querySelector(".popup__form");
-const placeTitleInput = document.querySelector(".popup__input_type_placename");
+const elementsList = document.querySelector(".elements__list");
+const elementsTemplate = document.querySelector(".elements_template").content;
+const placeNameInput = document.querySelector(".popup__input_type_placename");
 const placeLinkInput = document.querySelector(".popup__input_type_placelink");
- 
-const popupPicture = document.querySelector(".popup_open");
-const popupPictureLink = document.querySelector(".popup__placeimage");
-const popupPictureTitle = document.querySelector(".popup__openname");
-const closeButtonPicture = document.querySelector(".popup__closebutton_popup_open");
- 
-const buttonElementInfo = popupInfoForm.querySelector(".popup__savebutton");
-const buttonElementPlace = popupAddForm.querySelector(".popup__savebutton");
+const popupPlaceImage = document.querySelector(".popup_open");
+const popupPlaceImageLink = document.querySelector(".popup__placeimage");
+const popupPlaceImageName = document.querySelector(".popup__openname");
+const closeButtonImage = document.querySelector(".popup__closebutton_popup_open");
+const savebuttonElementProfile = profileForm.querySelector(".popup__savebutton");
+const savebuttonElementPlace = popupAddForm.querySelector(".popup__savebutton");
  
 const initialCards = [
    {
@@ -59,13 +56,13 @@ const initialCards = [
    errorClass: "popup__error_active",
 };
  
-function closePopupByEsc(evt) {
+function closePopupEsc(evt) {
    if (evt.key === "Escape") {
      closePopup(document.querySelector(".popup_opened"));
    }
 }
  
-function closePopupByClick(evt) {
+function closePopupExternalClick(evt) {
    if (evt.target.classList.contains("popup_opened")) {
      closePopup(document.querySelector(".popup_opened"));
    }
@@ -73,27 +70,27 @@ function closePopupByClick(evt) {
  
 function openPopup(popup) {
    popup.classList.add("popup_opened");
-   document.addEventListener("keydown", closePopupByEsc);
-   popup.addEventListener("click", closePopupByClick);
+   document.addEventListener("keydown", closePopupEsc);
+   popup.addEventListener("click", closePopupExternalClick);
 }
  
 function closePopup(popup) {
    popup.classList.remove("popup_opened");
-   document.removeEventListener("keydown", closePopupByEsc);
-   popup.removeEventListener("click", closePopupByClick);
+   document.removeEventListener("keydown", closePopupEsc);
+   popup.removeEventListener("click", closePopupExternalClick);
 }
  
-function editPopupInfo() {
-   openPopup(popupInfo);
-   userNameInput.value = userName.textContent;
-   userJobInput.value = userJob.textContent;
-   toggleButtonState([userNameInput, userJobInput], buttonElementInfo, classes);
+function editprofilePopup() {
+   openPopup(profilePopup);
+   profileTravelerInput.value = profileTraveler.textContent;
+   profileVocationInput.value = profileVocation.textContent;
+   toggleButtonState([profileTravelerInput, profileVocationInput], savebuttonElementProfile, classes);
 }
  function submitFormHandlerInfo(evt) {
    evt.preventDefault();
-   userName.textContent = userNameInput.value;
-   userJob.textContent = userJobInput.value;
-   closePopup(popupInfo);
+   profileTraveler.textContent = profileTravelerInput.value;
+   profileVocation.textContent = profileVocationInput.value;
+   closePopup(profilePopup);
 }
  function toggleLikeButton(event) {
    event.target.classList.toggle("elements__like_active");
@@ -103,13 +100,14 @@ function editPopupInfo() {
 }
  
 function openPicture(link, title) {
-   openPopup(popupPicture);
-   popupPictureLink.src = link;
-   popupPictureLink.alt = title;
-   popupPictureTitle.innerText = title;
+   openPopup(popupPlaceImage);
+   popupPlaceImageLink.src = link;
+   popupPlaceImageLink.alt = title;
+   popupPlaceImageName.innerText = title;
 }
- function createCard(name, link) {
-   const cardElement = itemTemplate.cloneNode(true);
+
+function createCard(name, link) {
+   const cardElement = elementsTemplate.cloneNode(true);
    cardElement.querySelector(".elements__title").innerText = name;
    const elImage = cardElement.querySelector(".elements__image");
    elImage.src = link;
@@ -125,36 +123,39 @@ function openPicture(link, title) {
    });
    return cardElement;
 }
- function renderItem(name, link) {
+
+function renderItem(name, link) {
    const newElement = createCard(name, link);
-   elList.prepend(newElement);
+   elementsList.prepend(newElement);
 }
- function createItem(e) {
+
+function createItem(e) {
    e.preventDefault();
-   renderItem(placeTitleInput.value, placeLinkInput.value);
+   renderItem(placeNameInput.value, placeLinkInput.value);
    e.target.reset();
-   toggleButtonState(placeTitleInput, placeLinkInput, buttonElementPlace, classes);
+   toggleButtonState(placeNameInput, placeLinkInput, savebuttonElementPlace, classes);
    closePopup(popupAdd);
 }
- enableValidation(classes);
+
+enableValidation(classes);
  
 editInfoButton.addEventListener("click", function () {
-   editPopupInfo();
+   editprofilePopup();
 });
  
 closeInfoButton.addEventListener("click", function () {
-   closePopup(popupInfo);
+   closePopup(profilePopup);
 });
  
-popupInfoForm.addEventListener("submit", function (event) {
+profileForm.addEventListener("submit", function (event) {
    submitFormHandlerInfo(event);
 });
  
 addPlaceButton.addEventListener("click", () => openPopup(popupAdd));
 closePlaceButton.addEventListener("click", () => closePopup(popupAdd));
 popupAddForm.addEventListener("submit", createItem);
- initialCards.forEach((item) => {
+initialCards.forEach((item) => {
    renderItem(item.name, item.link);
 });
  
-closeButtonPicture.addEventListener("click", () => closePopup(popupPicture));
+closeButtonImage.addEventListener("click", () => closePopup(popupPlaceImage));

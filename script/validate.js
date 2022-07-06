@@ -24,7 +24,7 @@ function setEventListeners(formElement, classes) {
     const inputList = Array.from(formElement.querySelectorAll(classes.inputSelector));
     const buttonElement = formElement.querySelector(
       classes.submitButtonSelector
-);
+)
 
 toggleButtonState(inputList, buttonElement, classes);
   
