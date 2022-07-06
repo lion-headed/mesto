@@ -34,11 +34,13 @@
     </footer>
     <div class="popup profile-popup">
         <div class="popup__container">
-             <button class="popup__closebutton" type="button"></button>
-             <form class="popup__form" id="popup__edit" name="edit form">
+             <button class="popup__closebutton popup__closebutton_profile-popup" type="button"></button>
+             <form class="popup__form" id="popup__edit" name="profile-popup" novalidate>
                  <h3 class="popup__title">Редактировать профиль</h3>
-                 <input required placeholder="Имя путешественника" class="popup__input popup__input_type_traveler" type="text" id="edit_traveler" name="traveler">
-                 <input required placeholder="Призвание" class="popup__input popup__input_type_vocation" type="text" id="edit_vocation" name="vocation">
+                 <input required placeholder="Имя путешественника" class="popup__input popup__input_type_traveler" id="popup__traveler" type="text" name="traveler" minlength="2" maxlength="40" required>
+                 <span class="popup__error popup__traveler-error"></span>
+                 <input required placeholder="Призвание" class="popup__input popup__input_type_vocation" type="text" id="popup__vocation" name="vocation" minlength="2" maxlength="200" required>
+                 <span class="popup__error popup__vocation-error"></span>
                  <button class="popup__savebutton" type="submit">Сохранить</button>
              </form>
         </div>
@@ -46,11 +48,13 @@
     <div class="popup popup_add">
         <div class="popup__container">
              <button class="popup__closebutton popup__closebutton_popup_add" type="button"></button>
-             <form class="popup__addform" id="popup__add" name="popup__add">
+             <form class="popup__form" id="popup__add" name="popup__add" novalidate>
                  <h3 class="popup__title">Новое место</h3>
-                 <input required placeholder="Название" class="popup__input popup__input_type_place-name" type="text" id="edit_place-name" name="place-name">
-                 <input required placeholder="Ссылка на картинку" class="popup__input popup__input_type_place-link" type="text" id="edit_place-link" name="place-link">
-                 <button class="popup__addbutton" type="submit">Сохранить</button>
+                 <input required placeholder="Название" class="popup__input popup__input_type_placename" id="popup__placename" type="text" name="place-name" minlength="2" maxlength="30" required>
+                 <span class="popup__error popup__placename-error"></span>
+                 <input required placeholder="Ссылка на картинку" class="popup__input popup__input_type_place-link" type="url" id="popup__placelink" name="place-link" required>
+                 <span class="popup__error popup__placelink-error"></span>
+                 <button class="popup__savebutton" type="submit">Сохранить</button>
              </form>
         </div>
     </div>
@@ -71,6 +75,7 @@
                 </div>
             </li>
     </template>
+    <script src="./script/validate.js"></script>
     <script src="./script/index.js"></script>
 </body>
 </html>
