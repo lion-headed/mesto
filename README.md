@@ -32,6 +32,10 @@
 
 * [Figma](https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=50160%3A347)
 
+**Figma ПР6**
+
+* [Figma] (https://www.figma.com/file/kRVLKwYG3d1HGLvh7JFWRT/JavaScript.-Sprint-6?node-id=1140%3A291)
+
 **Проект**
 
 [Мой проект](https://lion-headed.github.io/mesto/), знакомтесь.
