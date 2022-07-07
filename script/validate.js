@@ -19,7 +19,7 @@ function checkInputValidity(formElement, inputElement, classes) {
       hideInputError(formElement, inputElement, classes);
     }
 }
-  
+
 function setEventListeners(formElement, classes) {
     const inputList = Array.from(formElement.querySelectorAll(classes.inputSelector));
     const buttonElement = formElement.querySelector(
@@ -44,10 +44,16 @@ function hasInvalidInput(inputList) {
   
 function toggleButtonState(inputList, buttonElement, classes) {
     if (hasInvalidInput(inputList)) {
-      buttonElement.classList.add(classes.inactiveButtonClass);
+      inactiveButton(buttonElement, classes);
     } else {
       buttonElement.classList.remove(classes.inactiveButtonClass);
+      buttonElement.disabled=false;
     }
+}
+
+const inactiveButton = (buttonElement, classes) => {
+  buttonElement.classList.add(classes.inactiveButtonClass);
+  buttonElement.disabled=true;
 }
   
 function enableValidation(classes) {

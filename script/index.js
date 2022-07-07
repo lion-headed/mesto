@@ -1,6 +1,6 @@
-const profileForm = document.querySelector(".popup__form");
+const profileForm = document.querySelector(".popup__form_profile");
 const profilePopup = document.querySelector(".profile-popup");
-const editInfoButton = document.querySelector(".profile__edit");
+const profileButton = document.querySelector(".profile__edit");
 const closeInfoButton = document.querySelector(".popup__closebutton_profile-popup");
 const profileTraveler = document.querySelector(".profile__traveler");
 const profileVocation = document.querySelector(".profile__vocation");
@@ -9,15 +9,15 @@ const profileVocationInput = document.querySelector(".popup__input_type_vocation
 const addPlaceButton = document.querySelector(".profile__add");
 const closePlaceButton = document.querySelector(".popup__closebutton_popup_add");
 const popupAdd = document.querySelector(".popup_add");
-const popupAddForm = document.querySelector(".popup__form");
-const elementsList = document.querySelector(".elements__list");
+const popupAddForm = document.querySelector(".popup__form_add");
+const cardsContainer = document.querySelector(".elements__list");
 const elementsTemplate = document.querySelector(".elements_template").content;
 const placeNameInput = document.querySelector(".popup__input_type_placename");
 const placeLinkInput = document.querySelector(".popup__input_type_placelink");
 const popupPlaceImage = document.querySelector(".popup_open");
 const popupPlaceImageLink = document.querySelector(".popup__placeimage");
 const popupPlaceImageName = document.querySelector(".popup__openname");
-const closeButtonImage = document.querySelector(".popup__closebutton_popup_open");
+const placeCloseButton = document.querySelector(".popup__closebutton_popup_open");
 const savebuttonElementProfile = profileForm.querySelector(".popup__savebutton");
 const savebuttonElementPlace = popupAddForm.querySelector(".popup__savebutton");
  
@@ -55,7 +55,13 @@ const initialCards = [
    inputErrorClass: "popup__input_type_error",
    errorClass: "popup__error_active",
 };
- 
+
+function closePopup(popup) {
+    popup.classList.remove("popup_opened");
+    document.removeEventListener("keydown", closePopupEsc);
+    popup.removeEventListener("click", closePopupExternalClick);
+ }
+
 function closePopupEsc(evt) {
    if (evt.key === "Escape") {
      closePopup(document.querySelector(".popup_opened"));
@@ -64,21 +70,16 @@ function closePopupEsc(evt) {
  
 function closePopupExternalClick(evt) {
    if (evt.target.classList.contains("popup_opened")) {
-     closePopup(document.querySelector(".popup_opened"));
+     closePopup(evt.target);
    }
 }
  
 function openPopup(popup) {
    popup.classList.add("popup_opened");
    document.addEventListener("keydown", closePopupEsc);
-   popup.addEventListener("click", closePopupExternalClick);
+   popup.addEventListener("mousedown", closePopupExternalClick);
 }
  
-function closePopup(popup) {
-   popup.classList.remove("popup_opened");
-   document.removeEventListener("keydown", closePopupEsc);
-   popup.removeEventListener("click", closePopupExternalClick);
-}
  
 function editprofilePopup() {
    openPopup(profilePopup);
@@ -109,16 +110,16 @@ function openPicture(link, title) {
 function createCard(name, link) {
    const cardElement = elementsTemplate.cloneNode(true);
    cardElement.querySelector(".elements__title").innerText = name;
-   const elImage = cardElement.querySelector(".elements__image");
-   elImage.src = link;
-   elImage.alt = name;
+   const elementImage = cardElement.querySelector(".elements__image");
+   elementImage.src = link;
+   elementImage.alt = name;
    cardElement
      .querySelector(".elements__like")
      .addEventListener("click", toggleLikeButton);
    cardElement
      .querySelector(".elements__delete")
      .addEventListener("click", deleteItem);
-   elImage.addEventListener("click", function () {
+   elementImage.addEventListener("click", function () {
      openPicture(link, name);
    });
    return cardElement;
@@ -126,7 +127,7 @@ function createCard(name, link) {
 
 function renderItem(name, link) {
    const newElement = createCard(name, link);
-   elementsList.prepend(newElement);
+   cardsContainer.prepend(newElement);
 }
 
 function createItem(e) {
@@ -139,7 +140,7 @@ function createItem(e) {
 
 enableValidation(classes);
  
-editInfoButton.addEventListener("click", function () {
+profileButton.addEventListener("click", function () {
    editprofilePopup();
 });
  
@@ -158,4 +159,4 @@ initialCards.forEach((item) => {
    renderItem(item.name, item.link);
 });
  
-closeButtonImage.addEventListener("click", () => closePopup(popupPlaceImage));
+placeCloseButton.addEventListener("click", () => closePopup(popupPlaceImage));
