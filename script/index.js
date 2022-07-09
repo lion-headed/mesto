@@ -148,6 +148,10 @@ closeInfoButton.addEventListener("click", function () {
    closePopup(profilePopup);
 });
  
+profileForm.addEventListener("submit", function (event) {
+   submitFormHandlerInfo(event);
+});
+ 
 newPlaceButton.addEventListener("click", () => openPopup(popupAdd));
 newPlaceButtonClose.addEventListener("click", () => closePopup(popupAdd));
 popupAddForm.addEventListener("submit", createItem);
