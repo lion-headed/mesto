@@ -6,8 +6,8 @@ const profileTraveler = document.querySelector(".profile__traveler");
 const profileVocation = document.querySelector(".profile__vocation");
 const profileTravelerInput = document.querySelector(".popup__input_type_traveler");
 const profileVocationInput = document.querySelector(".popup__input_type_vocation");
-const addPlaceButton = document.querySelector(".profile__add");
-const closePlaceButton = document.querySelector(".popup__closebutton_popup_add");
+const newPlaceButton = document.querySelector(".profile__add");
+const newPlaceButtonClose = document.querySelector(".popup__closebutton_popup_add");
 const popupAdd = document.querySelector(".popup_add");
 const popupAddForm = document.querySelector(".popup__form_add");
 const cardsContainer = document.querySelector(".elements__list");
@@ -18,8 +18,8 @@ const popupPlaceImage = document.querySelector(".popup_open");
 const popupPlaceImageLink = document.querySelector(".popup__placeimage");
 const popupPlaceImageName = document.querySelector(".popup__openname");
 const placeCloseButton = document.querySelector(".popup__closebutton_popup_open");
-const savebuttonElementProfile = profileForm.querySelector(".popup__savebutton");
-const savebuttonElementPlace = popupAddForm.querySelector(".popup__savebutton");
+const elementProfileSavebutton = profileForm.querySelector(".popup__savebutton");
+const elementPlaceSavebutton = popupAddForm.querySelector(".popup__savebutton");
  
 const initialCards = [
    {
@@ -56,10 +56,12 @@ const initialCards = [
    errorClass: "popup__error_active",
 };
 
+enableValidation(classes);
+
 function closePopup(popup) {
     popup.classList.remove("popup_opened");
     document.removeEventListener("keydown", closePopupEsc);
-    popup.removeEventListener("click", closePopupExternalClick);
+    popup.removeEventListener("mousedown", closePopupExternalClick);
  }
 
 function closePopupEsc(evt) {
@@ -85,7 +87,7 @@ function editprofilePopup() {
    openPopup(profilePopup);
    profileTravelerInput.value = profileTraveler.textContent;
    profileVocationInput.value = profileVocation.textContent;
-   toggleButtonState([profileTravelerInput, profileVocationInput], savebuttonElementProfile, classes);
+   toggleButtonState([profileTravelerInput, profileVocationInput], elementProfileSavebutton, classes);
 }
  function submitFormHandlerInfo(evt) {
    evt.preventDefault();
@@ -134,11 +136,9 @@ function createItem(e) {
    e.preventDefault();
    renderItem(placeNameInput.value, placeLinkInput.value);
    e.target.reset();
-   toggleButtonState(placeNameInput, placeLinkInput, savebuttonElementPlace, classes);
+   toggleButtonState([placeNameInput, placeLinkInput], elementPlaceSavebutton, classes);
    closePopup(popupAdd);
 }
-
-enableValidation(classes);
  
 profileButton.addEventListener("click", function () {
    editprofilePopup();
@@ -148,12 +148,8 @@ closeInfoButton.addEventListener("click", function () {
    closePopup(profilePopup);
 });
  
-profileForm.addEventListener("submit", function (event) {
-   submitFormHandlerInfo(event);
-});
- 
-addPlaceButton.addEventListener("click", () => openPopup(popupAdd));
-closePlaceButton.addEventListener("click", () => closePopup(popupAdd));
+newPlaceButton.addEventListener("click", () => openPopup(popupAdd));
+newPlaceButtonClose.addEventListener("click", () => closePopup(popupAdd));
 popupAddForm.addEventListener("submit", createItem);
 initialCards.forEach((item) => {
    renderItem(item.name, item.link);

@@ -36,12 +36,6 @@ inputList.forEach((inputElement) => {
     });
 }
   
-function hasInvalidInput(inputList) {
-    return inputList.some((inputElement) => {
-      return !inputElement.validity.valid;
-    });
-}
-  
 function toggleButtonState(inputList, buttonElement, classes) {
     if (hasInvalidInput(inputList)) {
       inactiveButton(buttonElement, classes);
@@ -49,6 +43,12 @@ function toggleButtonState(inputList, buttonElement, classes) {
       buttonElement.classList.remove(classes.inactiveButtonClass);
       buttonElement.disabled=false;
     }
+}
+
+function hasInvalidInput(inputList) {
+  return inputList.some((inputElement) => {
+    return !inputElement.validity.valid;
+  });
 }
 
 const inactiveButton = (buttonElement, classes) => {
