@@ -1,5 +1,10 @@
 .popup__placeimage {
-    max-height: 75vh;
-    max-width: 75vw;
-    margin-bottom: 10px;
+    padding: 0; 
+    margin: 0; 
+    max-width: 75vw; 
+    max-height: 75vh; 
+    border: none; 
+    border-radius: 0px;
+    position: relative;
+    z-index: 3;
 }
