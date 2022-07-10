@@ -1,7 +1,7 @@
 const profileForm = document.querySelector(".popup__form_profile");
 const profilePopup = document.querySelector(".profile-popup");
 const profileButton = document.querySelector(".profile__edit");
-const closeInfoButton = document.querySelector(".popup__closebutton_profile-popup");
+const profileEditCloseButton = document.querySelector(".popup__closebutton_profile-popup");
 const profileTraveler = document.querySelector(".profile__traveler");
 const profileVocation = document.querySelector(".profile__vocation");
 const profileTravelerInput = document.querySelector(".popup__input_type_traveler");
@@ -144,7 +144,7 @@ profileButton.addEventListener("click", function () {
    editprofilePopup();
 });
  
-closeInfoButton.addEventListener("click", function () {
+profileEditCloseButton.addEventListener("click", function () {
    closePopup(profilePopup);
 });
  

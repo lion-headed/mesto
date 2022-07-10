@@ -59,9 +59,6 @@ const inactiveButton = (buttonElement, classes) => {
 function enableValidation(classes) {
     const formList = Array.from(document.querySelectorAll(classes.formSelector));
     formList.forEach((formElement) => {
-      formElement.addEventListener("submit", function (evt) {
-        evt.preventDefault();
-      });
       setEventListeners(formElement, classes);
     });
 }
