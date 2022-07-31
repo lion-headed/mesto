@@ -22,6 +22,7 @@
 * Адаптивная верстка
 * Организация файловой системы стилей по БЭМ
 * Применение JS
+* ООП
 
 
 **Figma ПР4**
@@ -34,7 +35,7 @@
 
 **Figma ПР6**
 
-* [Figma] (https://www.figma.com/file/kRVLKwYG3d1HGLvh7JFWRT/JavaScript.-Sprint-6?node-id=1140%3A291)
+* [Figma](https://www.figma.com/file/kRVLKwYG3d1HGLvh7JFWRT/JavaScript.-Sprint-6?node-id=1140%3A291)
 
 **Проект**
 

@@ -1,3 +1,6 @@
+import {Card} from "./Card.js";
+import {FormValidator} from "./FormValidator.js";
+
 const profileForm = document.querySelector(".popup__form_profile");
 const profilePopup = document.querySelector(".profile-popup");
 const profileButton = document.querySelector(".profile__edit");
@@ -56,8 +59,6 @@ const initialCards = [
    errorClass: "popup__error_active",
 };
 
-enableValidation(classes);
-
 function closePopup(popup) {
     popup.classList.remove("popup_opened");
     document.removeEventListener("keydown", closePopupEsc);
@@ -81,7 +82,12 @@ function openPopup(popup) {
    document.addEventListener("keydown", closePopupEsc);
    popup.addEventListener("mousedown", closePopupExternalClick);
 }
- 
+
+const formAddCardValidator = new FormValidator(popupAdd, classes);
+formAddCardValidator.enableValidation();
+
+const formEditProfileValidator = new FormValidator(profilePopup, classes);
+formEditProfileValidator.enableValidation();
  
 function editprofilePopup() {
    openPopup(profilePopup);
@@ -95,51 +101,26 @@ function editprofilePopup() {
    profileVocation.textContent = profileVocationInput.value;
    closePopup(profilePopup);
 }
- function toggleLikeButton(event) {
-   event.target.classList.toggle("elements__like_active");
-}
- function deleteItem(event) {
-   event.target.closest(".elements__element").remove();
-}
- 
-function openPicture(link, title) {
-   openPopup(popupPlaceImage);
-   popupPlaceImageLink.src = link;
-   popupPlaceImageLink.alt = title;
-   popupPlaceImageName.innerText = title;
-}
 
-function createCard(name, link) {
-   const cardElement = elementsTemplate.cloneNode(true);
-   cardElement.querySelector(".elements__title").innerText = name;
-   const elementImage = cardElement.querySelector(".elements__image");
-   elementImage.src = link;
-   elementImage.alt = name;
-   cardElement
-     .querySelector(".elements__like")
-     .addEventListener("click", toggleLikeButton);
-   cardElement
-     .querySelector(".elements__delete")
-     .addEventListener("click", deleteItem);
-   elementImage.addEventListener("click", function () {
-     openPicture(link, name);
-   });
-   return cardElement;
-}
-
-function renderItem(name, link) {
-   const newElement = createCard(name, link);
-   cardsContainer.prepend(newElement);
-}
-
-function createItem(e) {
-   e.preventDefault();
-   renderItem(placeNameInput.value, placeLinkInput.value);
-   e.target.reset();
-   toggleButtonState([placeNameInput, placeLinkInput], elementPlaceSavebutton, classes);
+function createItem(evt) {
+   evt.preventDefault();
+   const newCard = {};
+   newCard.name = placeNameInput.value;
+   newCard.link = placeLinkInput.value;
+   const card = new Card(
+     newCard,
+     ".elements-template",
+     openPopup,
+     popupPlaceImage,
+     popupPlaceImageLink,
+     popupPlaceImageName
+   );
+   const cardElement = card.createCard();
+   document.querySelector(".elements__list").prepend(cardElement);
+   evt.target.reset();
    closePopup(popupAdd);
 }
- 
+
 profileButton.addEventListener("click", function () {
    editprofilePopup();
 });
@@ -155,8 +136,18 @@ profileForm.addEventListener("submit", function (event) {
 newPlaceButton.addEventListener("click", () => openPopup(popupAdd));
 newPlaceButtonClose.addEventListener("click", () => closePopup(popupAdd));
 popupAddForm.addEventListener("submit", createItem);
-initialCards.forEach((item) => {
-   renderItem(item.name, item.link);
-});
  
 placeCloseButton.addEventListener("click", () => closePopup(popupPlaceImage));
+
+initialCards.forEach((item) => {
+   const card = new Card(
+     item,
+     ".elements_template",
+     openPopup,
+     popupPlaceImage,
+     popupPlaceImageLink,
+     popupPlaceImageName
+   );
+   const cardElement = card.createCard();
+   document.querySelector(".elements__list").prepend(cardElement);
+ });
