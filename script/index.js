@@ -77,11 +77,11 @@ function editprofilePopup() {
    closePopup(profilePopup);
 }
 
-function openPlaceImage(link, title) {
-  popupPictureLink.src = link;
-  popupPictureLink.alt = title;
-  popupPictureTitle.innerText = title;
-  openPopup(popupPicture);
+function openPlaceImage(link, name) {
+  popupPlaceImageLink.src = link;
+  popupPlaceImageLink.alt = name;
+  popupPlaceImageName.innerText = name;
+  openPopup(popupPlaceImage);
 }
 
 function createItem(cardData) {
